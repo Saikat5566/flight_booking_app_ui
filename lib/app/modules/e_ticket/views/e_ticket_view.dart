@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../../Custom_Files/custom_flights.dart';
@@ -13,12 +12,17 @@ class ETicketView extends GetView<ETicketController> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    // font color helper
+    // Helper function to get font color based on theme
     Color fontColor() => Get.isDarkMode ? Colors.black : Colors.white;
+
     return Scaffold(
+      // Background color depends on theme
       backgroundColor: Get.isDarkMode ? colorScheme.primary : Colors.blueAccent,
+
+      // AppBar
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        // Transparent for overlay effect
         iconTheme: IconThemeData(color: fontColor()),
         title: Text('E-Ticket', style: TextStyle(color: fontColor())),
         actions: [
@@ -26,6 +30,8 @@ class ETicketView extends GetView<ETicketController> {
         ],
         centerTitle: true,
       ),
+
+      // Body
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Container(
@@ -40,16 +46,23 @@ class ETicketView extends GetView<ETicketController> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // QR/Barcode Image
                 Image.asset('assets/images/Scanner/Scanner.png'),
+
+                // Instruction Text
                 Text(
                   'Show your ID and this barcode at the check-in gate',
                   style: TextStyle(color: Colors.black),
                 ),
+
+                // Divider
                 Container(
                   height: 1,
                   width: double.infinity,
                   color: Colors.grey,
                 ),
+
+                // Flight Overview using CustomFlights widget
                 CustomFlights(
                   image: AssetImage('assets/images/local/images.png'),
                   flightName: 'Emirates',
@@ -59,12 +72,15 @@ class ETicketView extends GetView<ETicketController> {
                   duration: '7h 30m',
                   direct: 'Direct',
                 ),
+
+                // Divider
                 Container(
                   height: 1,
                   width: double.infinity,
                   color: Colors.grey,
                 ),
 
+                // Passenger Name Row
                 Row(
                   children: [
                     Text(
@@ -79,6 +95,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Email Row
                 Row(
                   children: [
                     Text('Email', style: TextStyle(color: Colors.black)),
@@ -90,6 +107,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Phone Number Row
                 Row(
                   children: [
                     Text('Phone Number', style: TextStyle(color: Colors.black)),
@@ -101,6 +119,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Class Row
                 Row(
                   children: [
                     Text('Class', style: TextStyle(color: Colors.black)),
@@ -109,6 +128,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Booking ID Row
                 Row(
                   children: [
                     Text('Booking ID', style: TextStyle(color: Colors.black)),
@@ -117,6 +137,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Flight Number Row
                 Row(
                   children: [
                     Text(
@@ -128,6 +149,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Gate Row
                 Row(
                   children: [
                     Text('Gate', style: TextStyle(color: Colors.black)),
@@ -136,6 +158,7 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Seat Number Row
                 Row(
                   children: [
                     Text('Seat Number', style: TextStyle(color: Colors.black)),
@@ -144,12 +167,14 @@ class ETicketView extends GetView<ETicketController> {
                   ],
                 ),
 
+                // Divider
                 Container(
                   height: 1,
                   width: double.infinity,
                   color: Colors.grey,
                 ),
 
+                // Footer Messages
                 Text(
                   'Enjoy traveling around the world with us',
                   style: TextStyle(color: Colors.black),

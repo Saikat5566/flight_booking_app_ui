@@ -1,3 +1,4 @@
+import 'package:flight_booking_app/custom_files/custom_selection_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../custom_files/custom_bottom_navigation_bar.dart';
@@ -15,14 +16,16 @@ class HomeView extends GetView<HomeController> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     Color fontColor() => Get.isDarkMode ? Colors.black : Colors.white;
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Top Stack for Header and Card
             Stack(
               children: [
-                // Top header
+                // Top header section
                 Container(
                   height: 400,
                   width: double.infinity,
@@ -38,6 +41,7 @@ class HomeView extends GetView<HomeController> {
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        // Profile Avatar
                         CircleAvatar(
                           radius: 25,
                           backgroundImage: AssetImage(
@@ -45,6 +49,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                         ),
                         const SizedBox(width: 10),
+                        // Greeting Column
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -65,6 +70,7 @@ class HomeView extends GetView<HomeController> {
                           ],
                         ),
                         const Spacer(),
+                        // Notification and Theme Buttons
                         Row(
                           children: [
                             Icon(
@@ -95,7 +101,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
 
-                // Card
+                // Flight Search Card
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Column(
@@ -116,32 +122,8 @@ class HomeView extends GetView<HomeController> {
                           ),
                           child: Column(
                             children: [
-                              // Buttons Row
-                              Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
-                                children: [
-                                  CustomButton(
-                                    text: 'One Way',
-                                    backgroundColor: Get.isDarkMode
-                                        ? colorScheme.primary
-                                        : Colors.blueAccent,
-                                    borderRadius: BorderRadius.circular(40),
-                                    textColor: Colors.black,
-                                  ),
-                                  CustomButton(
-                                    text: 'Round Trip',
-                                    borderRadius: BorderRadius.circular(40),
-                                    textColor: Colors.black,
-                                  ),
-                                  CustomButton(
-                                    text: 'Multi-City',
-                                    borderRadius: BorderRadius.circular(40),
-                                    textColor: Colors.black,
-                                  ),
-                                ],
-                              ),
-
+                              // Custom Selection Buttons
+                              CustomSelectionButtons(),
                               const SizedBox(height: 20),
 
                               // From TextField
@@ -180,7 +162,7 @@ class HomeView extends GetView<HomeController> {
 
                               const SizedBox(height: 20),
 
-                              // Two TextFields in a Row
+                              // Row of Passengers and Class
                               Row(
                                 children: [
                                   Expanded(
@@ -210,7 +192,7 @@ class HomeView extends GetView<HomeController> {
 
                               const SizedBox(height: 20),
 
-                              // Search Button
+                              // Search Flights Button
                               CustomButton(
                                 onPressed: () {
                                   Get.toNamed(Routes.SEARCH_FLIGHT_SCREEN);
@@ -235,6 +217,7 @@ class HomeView extends GetView<HomeController> {
 
             const SizedBox(height: 20),
 
+            // Special Offers Header
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -276,7 +259,7 @@ class HomeView extends GetView<HomeController> {
 
             const SizedBox(height: 20),
 
-            // Special Offers Cards
+            // Horizontal Scroll of Special Offer Cards
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
@@ -314,6 +297,7 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
 
+      // Custom Bottom Navigation Bar
       bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }

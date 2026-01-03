@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 
 import '../../../../Custom_Files/custom_booking_steps.dart';
@@ -18,11 +17,13 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    // font color helper
+    // Helper function to get font color based on theme
     Color fontColor() => Get.isDarkMode ? Colors.black : Colors.white;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+
+      // AppBar
       appBar: AppBar(
         iconTheme: IconThemeData(color: fontColor()),
         backgroundColor: Get.isDarkMode
@@ -31,9 +32,12 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
         title: Text('Fill In Details', style: TextStyle(color: fontColor())),
         centerTitle: true,
       ),
+
+      // Body
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Booking Steps Top Row
             Container(
               height: 80,
               color: Get.isDarkMode ? colorScheme.primary : Colors.blueAccent,
@@ -72,11 +76,15 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                 ),
               ),
             ),
+
             SizedBox(height: 20),
+
+            // Flight Information and Booking Details
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
+                  // Flight Overview Card
                   CustomFlights(
                     image: AssetImage('assets/images/local/images.png'),
                     flightName: 'Emirates',
@@ -86,9 +94,15 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                     duration: "7h 30m",
                     direct: 'Direct',
                   ),
+
                   SizedBox(height: 20),
+
+                  // Flight Detailed Information
                   CustomFlightDetails(),
+
                   SizedBox(height: 20),
+
+                  // Contact Details Section
                   CustomUserInfo(
                     headText: 'Contact Details',
                     prefixIcon: Icons.person_2_outlined,
@@ -105,7 +119,6 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                             color: Colors.black,
                           ),
                         ),
-
                         Row(
                           children: [
                             Text(
@@ -122,7 +135,10 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                       ],
                     ),
                   ),
+
                   SizedBox(height: 20),
+
+                  // Passenger Details Section
                   CustomUserInfo(
                     headText: 'Passenger(s) Details',
                     prefixIcon: Icons.group,
@@ -131,11 +147,11 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 10),
-
                         Text(
                           'Passenger',
                           style: TextStyle(color: Colors.black),
                         ),
+                        // Passenger Name Dropdown Container
                         Container(
                           height: 50,
                           width: double.infinity,
@@ -163,7 +179,10 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                       ],
                     ),
                   ),
+
                   SizedBox(height: 20),
+
+                  // Seat Number Section
                   CustomUserInfo(
                     headText: 'Seat Number',
                     prefixIcon: Icons.airline_seat_legroom_normal,
@@ -200,13 +219,16 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                       ],
                     ),
                   ),
+
                   SizedBox(height: 20),
+
+                  // Price Details Section
                   CustomUserInfo(
                     headText: 'Price Details',
                     prefixIcon: Icons.monetization_on_outlined,
                     child: Column(
                       children: [
-                        // SizedBox(height: 10),
+                        // Individual price rows
                         Row(
                           children: [
                             Text(
@@ -220,7 +242,6 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                             ),
                           ],
                         ),
-
                         Row(
                           children: [
                             Text(
@@ -228,13 +249,9 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                               style: TextStyle(color: Colors.black),
                             ),
                             Spacer(),
-                            Text(
-                              '\$45.00',
-                              style: TextStyle(color: Colors.black),
-                            ),
+                            Text('\$45.00', style: TextStyle(color: Colors.black)),
                           ],
                         ),
-
                         Row(
                           children: [
                             Text('Tax', style: TextStyle(color: Colors.black)),
@@ -245,6 +262,7 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                             ),
                           ],
                         ),
+                        // Divider
                         Container(
                           height: 1,
                           width: double.infinity,
@@ -263,7 +281,6 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
                             ),
                           ],
                         ),
-
                         SizedBox(height: 20),
                       ],
                     ),
@@ -274,6 +291,7 @@ class FlightBookingFlowView extends GetView<FlightBookingFlowController> {
 
             SizedBox(height: 20),
 
+            // Continue Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomButton(

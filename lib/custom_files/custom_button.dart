@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -32,9 +31,7 @@ class CustomButton extends StatelessWidget {
         ),
         elevation: MaterialStateProperty.all(0),
         shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: borderRadius,
-          ),
+          RoundedRectangleBorder(borderRadius: borderRadius),
         ),
       ),
       child: Text(

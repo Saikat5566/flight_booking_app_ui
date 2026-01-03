@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
 import '../../../../Custom_Files/custom_date_time_containers.dart';
@@ -14,11 +15,13 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    // font color helper
+    // Helper function for font color based on theme
     Color fontColor() => Get.isDarkMode ? Colors.black : Colors.white;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+
+      // AppBar
       appBar: AppBar(
         iconTheme: IconThemeData(color: fontColor()),
         backgroundColor: Get.isDarkMode
@@ -28,6 +31,8 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
         actions: [Icon(Icons.more_vert, color: fontColor())],
         centerTitle: true,
       ),
+
+      // Body
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -39,11 +44,13 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
               child: Column(
                 children: [
                   const SizedBox(height: 15),
+
+                  // Flight Route Row (From → Flight → To)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // From
+                      // From Location
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -67,7 +74,8 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
                           ),
                         ],
                       ),
-                      // Flight Icon + Seat info
+
+                      // Flight Icon + Seat Info
                       Column(
                         children: [
                           Icon(
@@ -84,7 +92,8 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
                           ),
                         ],
                       ),
-                      // To
+
+                      // To Location
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -113,12 +122,12 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
 
                   const SizedBox(height: 20),
 
-                  // Date Scroll
+                  // Horizontal Date Scroll
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
-                        // Calendar Icon
+                        // Calendar Icon Container
                         Container(
                           height: 70,
                           width: 70,
@@ -136,13 +145,19 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
                             color: Get.isDarkMode ? Colors.black : Colors.white,
                           ),
                         ),
+
                         const SizedBox(width: 10),
+
+                        // Vertical Divider
                         Container(
                           height: 70,
                           width: 1,
                           color: Get.isDarkMode ? Colors.black : Colors.white,
                         ),
+
                         const SizedBox(width: 10),
+
+                        // Date Containers
                         CustomDateTimeContainers(date: '25', day: 'Mon'),
                         const SizedBox(width: 10),
                         CustomDateTimeContainers(date: '26', day: 'Tue'),
@@ -161,11 +176,12 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
 
             const SizedBox(height: 20),
 
-            // Flights List
+            // Flights List Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 children: [
+                  // Single Flight Card with GestureDetector for navigation
                   GestureDetector(
                     onTap: () {
                       Get.toNamed(Routes.FLIGHT_DETAILS);
@@ -180,7 +196,10 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
                       direct: 'Direct',
                     ),
                   ),
+
                   const SizedBox(height: 20),
+
+                  // Second Flight
                   CustomFlights(
                     image: const AssetImage(
                       'assets/images/local/lufthansa_bot.jpg',
@@ -192,7 +211,10 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
                     duration: '10h 45m',
                     direct: '1 stop',
                   ),
+
                   const SizedBox(height: 20),
+
+                  // Third Flight
                   CustomFlights(
                     image: const AssetImage(
                       'assets/images/local/141-logo.webp',
@@ -207,7 +229,30 @@ class SearchFlightScreenView extends GetView<SearchFlightScreenController> {
                 ],
               ),
             ),
+
             const SizedBox(height: 20),
+          ],
+        ),
+      ),
+
+      // Bottom Navigation / Filter Row
+      bottomNavigationBar: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(20),
+            topLeft: Radius.circular(20),
+          ),
+          color: Get.isDarkMode ? colorScheme.primary : Colors.white,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.swap_vert, color: Colors.black),
+            Text('Sort', style: TextStyle(color: Colors.black)),
+            Container(height: 50, width: 2, color: Colors.black),
+            Icon(Icons.filter_list, color: Colors.black),
+            Text('Filter', style: TextStyle(color: Colors.black)),
           ],
         ),
       ),

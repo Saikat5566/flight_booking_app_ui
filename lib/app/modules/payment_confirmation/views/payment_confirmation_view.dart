@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:get/get.dart';
 
 import '../../../../Custom_Files/custom_booking_steps.dart';
@@ -18,10 +17,13 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    // font color helper
+    // Helper function for font color based on theme
     Color fontColor() => Get.isDarkMode ? Colors.black : Colors.white;
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+
+      // AppBar
       appBar: AppBar(
         iconTheme: IconThemeData(color: fontColor()),
         title: Text(
@@ -33,9 +35,12 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
             : Colors.blueAccent,
         centerTitle: true,
       ),
+
+      // Body
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // Booking Steps Container
             Container(
               height: 130,
               color: Get.isDarkMode ? colorScheme.primary : Colors.blueAccent,
@@ -43,6 +48,7 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   children: [
+                    // Booking Steps Row
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -71,7 +77,10 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
                         ),
                       ],
                     ),
+
                     SizedBox(height: 20),
+
+                    // Payment Timer Row
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -90,6 +99,7 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
 
             SizedBox(height: 30),
 
+            // Flight Info Card
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomFlights(
@@ -105,6 +115,7 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
 
             SizedBox(height: 20),
 
+            // Payment Method Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomUserInfo(
@@ -128,6 +139,7 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
 
             SizedBox(height: 20),
 
+            // Points Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomUserInfo(
@@ -145,7 +157,10 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
                 ),
               ),
             ),
+
             SizedBox(height: 20),
+
+            // Discounts / Vouchers Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomUserInfo(
@@ -170,7 +185,10 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
                 ),
               ),
             ),
+
             SizedBox(height: 20),
+
+            // Price Details Section
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomUserInfo(
@@ -178,7 +196,7 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
                 prefixIcon: Icons.monetization_on_outlined,
                 child: Column(
                   children: [
-                    // SizedBox(height: 10),
+                    // Each price row
                     Row(
                       children: [
                         Text(
@@ -236,11 +254,15 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
                         Text('\$388.75', style: TextStyle(color: Colors.black)),
                       ],
                     ),
+
+                    // Divider
                     Container(
                       height: 1,
                       width: double.infinity,
                       color: Colors.grey,
                     ),
+
+                    // Total Price Row
                     Row(
                       children: [
                         Text(
@@ -263,6 +285,7 @@ class PaymentConfirmationView extends GetView<PaymentConfirmationController> {
 
             SizedBox(height: 20),
 
+            // Pay Now Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomButton(
